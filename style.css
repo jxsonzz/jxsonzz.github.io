@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(10, 10, 10);
+}
+
+.quiz {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 200px;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.button {
+    margin: 30px 40px 30px 40px;
+    background-color: rgb(50, 50 ,50);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgb(50, 50 ,50);
+    min-height: 30px;
+    min-width: 50px;
+}
+
+.button:hover {
+    background-color: rgb(100, 100 ,100);
+    box-shadow: 0px 0px 3px 3px rgb(100, 100 ,100);
+    transition: 0.7s;
+}
+
+.button:active {
+    background-color: rgb(50, 50 ,50);
+    box-shadow: 0px 0px 3px 3px rgb(50, 50 ,50);
+    transition: 0.2s;
+}
+
+.frage1 {
+    color: white;
+    text-align: center;
+}
+
+.frage2 {
+    color: white;
+    text-align: center;
+}
+
+.frage3 {
+    color: white;
+    text-align: center;
+}
+
+.frage4 {
+    color: white;
+    text-align: center;
+}
+
+.frage5 {
+    color: white;
+    text-align: center;
+}
+
+#quizAbgeschossen {
+    visibility: hidden;
+}
