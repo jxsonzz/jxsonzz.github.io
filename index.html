@@ -1,238 +1,105 @@
 <!DOCTYPE html>
 <html>
+<link href="TicTacToe.css" rel="stylesheet">
 
 <head>
-    <title>Quiz</title>
-    <link href="./style.css" rel="stylesheet">
+    <title>TicTacToe</title>
+</head>
+
+<body onload="gameStart()">
+
     <script>
-        let counter = 0;
-        let beantworteteFragen = 0;
+        let changeSymbol = 'X';
 
-        function popup() {
-            document.getElementById('fragen').style.display = 'none';
-            document.getElementById('quizAbgeschossen').style.visibility = 'visible';
-            document.getElementById("result").innerHTML = counter;
-        }
-
-        function richtigeAntwort1() {
-            counter = counter + 1;
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig1").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig1").disabled = true;
-            document.getElementsByName("falsch1").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
+        function threeInA_Row() {
+            if (document.getElementById("topLeft").innerText == changeSymbol
+                && document.getElementById("top").innerText == changeSymbol
+                && document.getElementById("topRight").innerText == changeSymbol
+                || document.getElementById("left").innerText == changeSymbol
+                && document.getElementById("middle").innerText == changeSymbol
+                && document.getElementById("right").innerText == changeSymbol
+                || document.getElementById("bottomLeft").innerText == changeSymbol
+                && document.getElementById("bottom").innerText == changeSymbol
+                && document.getElementById("bottomRight").innerText == changeSymbol
+                || document.getElementById("topLeft").innerText == changeSymbol
+                && document.getElementById("middle").innerText == changeSymbol
+                && document.getElementById("bottomRight").innerText == changeSymbol
+                || document.getElementById("topRight").innerText == changeSymbol
+                && document.getElementById("middle").innerText == changeSymbol
+                && document.getElementById("bottomLeft").innerText == changeSymbol
+                || document.getElementById("topLeft").innerText == changeSymbol
+                && document.getElementById("left").innerText == changeSymbol
+                && document.getElementById("bottomLeft").innerText == changeSymbol
+                || document.getElementById("top").innerText == changeSymbol
+                && document.getElementById("middle").innerText == changeSymbol
+                && document.getElementById("bottom").innerText == changeSymbol
+                || document.getElementById("topRight").innerText == changeSymbol
+                && document.getElementById("right").innerText == changeSymbol
+                && document.getElementById("bottomRight").innerText == changeSymbol) {
+                return true;
             }
         }
 
-        function richtigeAntwort2() {
-            counter = counter + 1;
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig2").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig2").disabled = true;
-            document.getElementsByName("falsch2").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
+        function gameEnd() {
+            document.getElementById('game').style.display = 'none';
+            document.getElementById('win').style.visibility = 'visible';
+            document.getElementById('winner').innerHTML = changeSymbol;
         }
 
-        function richtigeAntwort3() {
-            counter = counter + 1;
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig3").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig3").disabled = true;
-            document.getElementsByName("falsch3").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
+        function setSymbol(buttonId) {
+            document.getElementById(buttonId).innerText = changeSymbol;
+
+            if (threeInA_Row()) {
+                gameEnd();
             }
+
+            if (changeSymbol == 'X') {
+                changeSymbol = 'O';
+            }
+            else {
+                changeSymbol = 'X';
+            }
+
+            document.getElementById(buttonId).disabled = true;
+            document.getElementById("symbol").innerHTML = changeSymbol;
+
+
+
         }
 
-        function richtigeAntwort4() {
-            counter = counter + 1;
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig4").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig4").disabled = true;
-            document.getElementsByName("falsch4").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-
-        function richtigeAntwort5() {
-            counter = counter + 1;
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig5").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig5").disabled = true;
-            document.getElementsByName("falsch5").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-
-        function falscheAntwort1() {
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig1").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig1").disabled = true;
-            document.getElementsByName("falsch1").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-
-        function falscheAntwort2() {
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig2").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig2").disabled = true;
-            document.getElementsByName("falsch2").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-        function falscheAntwort3() {
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig3").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig3").disabled = true;
-            document.getElementsByName("falsch3").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-
-        function falscheAntwort4() {
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig4").style.backgroundColor = '#00FF00';
-            document.getElementById("richtig4").disabled = true;
-            document.getElementsByName("falsch4").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-
-        function falscheAntwort5() {
-            beantworteteFragen = beantworteteFragen + 1;
-            document.getElementById("counter").innerHTML = counter;
-            document.getElementById("richtig5").style.backgroundColor = '#00FF00';
-            
-            document.getElementById("richtig5").disabled = true;
-            document.getElementsByName("falsch5").forEach(element => {
-                element.style.backgroundColor = '#FF0000';
-                element.disabled = true;
-            });
-            if (beantworteteFragen == 5) {
-                popup();
-            }
-        }
-
-        function setCounter() {
-            document.getElementById("counter").innerHTML = counter;
+        function gameStart() {
+            document.getElementById("symbol").innerHTML = changeSymbol;
         }
 
     </script>
-</head>
+    <div id="game">
+        <h1>TicTacToe</h1>
 
-<body onload="setCounter()">
-    <div id="fragen">
-        <h1 class="quiz">Quiz</h1>
-        <h1 class="quiz">Fragen</h1>
-        <div class="frage1">
-            <p>Frage 1: Wie heiße ich?</p>
-            <button class="button" id="falsch1" name="falsch1" type="button" onclick="falscheAntwort1()">James</button>
-            <button class="button" id="richtig1" type="button" onclick="richtigeAntwort1()">Jason</button>
-            <button class="button" id="falsch1" name="falsch1" type="button" onclick="falscheAntwort1()">Hanz</button>
-            <button class="button" id="falsch1" name="falsch1" type="button" onclick="falscheAntwort1()">Peter</button>
+        <p><span id="symbol"></span> ist an der Reihe</p>
+
+        <div id="row1">
+            <button id="topLeft" onclick="setSymbol('topLeft')">‎ </button>
+            <button id="top" onclick="setSymbol('top')">‎ </button>
+            <button id="topRight" onclick="setSymbol('topRight')">‎ </button>
+        </div>
+        <div id="row2">
+            <button id="left" onclick="setSymbol('left')">‎ </button>
+            <button id="middle" onclick="setSymbol('middle')">‎ </button>
+            <button id="right" onclick="setSymbol('right')">‎ </button>
+        </div>
+        <div id="row3">
+            <button id="bottomLeft" onclick="setSymbol('bottomLeft')">‎ </button>
+            <button id="bottom" onclick="setSymbol('bottom')">‎ </button>
+            <button id="bottomRight" onclick="setSymbol('bottomRight')">‎ </button>
         </div>
 
-
-        <div class="frage2">
-            <p>Frage 2: Wie alt bin ich?</p>
-            <button class="button" id="richtig2" type="button" onclick="richtigeAntwort2()">15 Jahre</button>
-            <button class="button" id="falsch2" name="falsch2" type="button" onclick="falscheAntwort2()">16
-                Jahre</button>
-            <button class="button" id="falsch2" name="falsch2" type="button" onclick="falscheAntwort2()">17
-                Jahre</button>
-            <button class="button" id="falsch2" name="falsch2" type="button" onclick="falscheAntwort2()">18
-                Jahre</button>
-        </div>
-
-
-
-        <div class="frage3">
-            <p>Frage 3: In weleche Klasse gehe ich?</p>
-            <button class="button" id="falsch3" name="falsch3" type="button" onclick="falscheAntwort3()">6.
-                Klasse</button>
-            <button class="button" id="falsch3" name="falsch3" type="button" onclick="falscheAntwort3()">7.
-                Klasse</button>
-            <button class="button" id="falsch3" name="falsch3" type="button" onclick="falscheAntwort3()">8.
-                Klasse</button>
-            <button class="button" id="richtig3" type="button" onclick="richtigeAntwort3()">9. Klasse</button>
-        </div>
-
-
-
-        <div class="frage4">
-            <p>Frage 4: Wo wohne ich?</p>
-            <button class="button" id="falsch4" name="falsch4" type="button"
-                onclick="falscheAntwort4()">Braunschweig</button>
-            <button class="button" id="falsch4" name="falsch4" type="button"
-                onclick="falscheAntwort4()">Hildesheim</button>
-            <button class="button" id="richtig4" type="button" onclick="richtigeAntwort4()">Hachum</button>
-            <button class="button" id="falsch4" name="falsch4" type="button"
-                onclick="falscheAntwort4()">Wolfsburg</button>
-        </div>
-
-
-
-        <div class="frage5">
-            <p>Frage 5: An welche Zahl denke ich?</p>
-            <button class="button" id="richtig5" type="button" onclick="richtigeAntwort5()">6</button>
-            <button class="button" id="falsch5" name="falsch5" type="button" onclick="falscheAntwort5()">7</button>
-            <button class="button" id="falsch5" name="falsch5" type="button" onclick="falscheAntwort5()">8</button>
-            <button class="button" id="falsch5" name="falsch5" type="button" onclick="falscheAntwort5()">9</button>
-        </div>
-        <div class="richtigeAntworten"></div>
-        <p>Richtige Antworten: <span id="counter"></span> von 5</p>
     </div>
-    <div id="quizAbgeschossen">
-        <h1>Du hast das Quiz abgeschlossen!</h1>
-        <p>Du hast <span id="result"></span> von 5 fragen richtig beantwortet</p>
     </div>
-    
+    <div id="win">
+        <h1>Das Spiel ist vorbei!</h1>
+        <p><span id="winner"></span> hat das Spiel gewonnen!</p>
+    </div>
+
 </body>
 
 </html>
