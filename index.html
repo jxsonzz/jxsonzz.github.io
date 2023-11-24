@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link ./href="style.css" rel="stylesheet">
+<link href="TicTacToe.css" rel="stylesheet">
 
 <head>
     <title>TicTacToe</title>
@@ -10,6 +10,8 @@
 
     <script>
         let changeSymbol = 'X';
+        let xPoints = 0;
+        let oPoints = 0;
 
         function threeInA_Row() {
             if (document.getElementById("topLeft").innerText == changeSymbol
@@ -42,7 +44,7 @@
 
         function gameEnd() {
             document.getElementById('game').style.display = 'none';
-            document.getElementById('win').style.visibility = 'visible';
+            document.getElementById('win').style.display = 'block';
             document.getElementById('winner').innerHTML = changeSymbol;
         }
 
@@ -67,30 +69,71 @@
 
         }
 
+        function gameReset() {
+
+            document.getElementById("topLeft").disabled = false;
+            document.getElementById("top").disabled = false;
+            document.getElementById("topRight").disabled = false;
+            document.getElementById("left").disabled = false;
+            document.getElementById("middle").disabled = false;
+            document.getElementById("right").disabled = false;
+            document.getElementById("bottomLeft").disabled = false;
+            document.getElementById("bottom").disabled = false;
+            document.getElementById("bottomRight").disabled = false;
+            document.getElementById("topLeft").innerText = '‎';
+            document.getElementById("top").innerText = '‎';
+            document.getElementById("topRight").innerText = '‎';
+            document.getElementById("left").innerText = '‎';
+            document.getElementById("middle").innerText = '‎';
+            document.getElementById("right").innerText = '‎';
+            document.getElementById("bottomLeft").innerText = '‎';
+            document.getElementById("bottom").innerText = '‎';
+            document.getElementById("bottomRight").innerText = '‎';
+        }
+
+        function newGame() {
+            if (changeSymbol == 'X') {
+                oPoints = oPoints + 1;
+            }
+            else {
+                xPoints = xPoints + 1;
+            }
+            document.getElementById('game').style.display = 'block';
+            document.getElementById('win').style.display = 'none';
+            gameStart();
+            gameReset();
+        }
+
         function gameStart() {
+            changeSymbol = 'X';
             document.getElementById("symbol").innerHTML = changeSymbol;
+            document.getElementById("xPoints").innerHTML = xPoints;
+            document.getElementById("oPoints").innerHTML = oPoints;
         }
 
     </script>
     <div id="game">
         <h1>TicTacToe</h1>
 
+        <p>X = <span id="xPoints"></span></p>
+        <p>O = <span id="oPoints"></span></p>
+
         <p><span id="symbol"></span> ist an der Reihe</p>
 
         <div id="row1">
-            <button id="topLeft" onclick="setSymbol('topLeft')">‎ </button>
-            <button id="top" onclick="setSymbol('top')">‎ </button>
-            <button id="topRight" onclick="setSymbol('topRight')">‎ </button>
+            <button id="topLeft" onclick="setSymbol('topLeft')">‎</button>
+            <button id="top" onclick="setSymbol('top')">‎</button>
+            <button id="topRight" onclick="setSymbol('topRight')">‎</button>
         </div>
         <div id="row2">
-            <button id="left" onclick="setSymbol('left')">‎ </button>
-            <button id="middle" onclick="setSymbol('middle')">‎ </button>
-            <button id="right" onclick="setSymbol('right')">‎ </button>
+            <button id="left" onclick="setSymbol('left')">‎</button>
+            <button id="middle" onclick="setSymbol('middle')">‎</button>
+            <button id="right" onclick="setSymbol('right')">‎</button>
         </div>
         <div id="row3">
-            <button id="bottomLeft" onclick="setSymbol('bottomLeft')">‎ </button>
-            <button id="bottom" onclick="setSymbol('bottom')">‎ </button>
-            <button id="bottomRight" onclick="setSymbol('bottomRight')">‎ </button>
+            <button id="bottomLeft" onclick="setSymbol('bottomLeft')">‎</button>
+            <button id="bottom" onclick="setSymbol('bottom')">‎</button>
+            <button id="bottomRight" onclick="setSymbol('bottomRight')">‎</button>
         </div>
 
     </div>
@@ -98,6 +141,7 @@
     <div id="win">
         <h1>Das Spiel ist vorbei!</h1>
         <p><span id="winner"></span> hat das Spiel gewonnen!</p>
+        <button id="playAgain" onclick="newGame()">Erneut spielen</button>
     </div>
 
 </body>

@@ -50,5 +50,11 @@ button:hover {
 }
 
 #win {
-    visibility: hidden;
+    display: none;
+    text-align: center;
+}
+
+#playAgain {
+    height: 75px;
+    width: 250px;
 }
